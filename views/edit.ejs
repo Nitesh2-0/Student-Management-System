@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Profile</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-200 flex justify-center items-center h-screen">
+
+<form action="/update/<%= userDetails._id %>" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-80">
+    <h2 class="text-2xl mb-4 text-center">Edit Profile</h2>
+    <div class="mb-4">
+        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+        <input type="text" id="name" name="name" required value="<%= userDetails.name %>"
+               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    </div>
+
+    <div class="mb-4">
+        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+        <input type="email" id="email" name="email" required value="<%= userDetails.email %>"
+               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    </div>
+
+    <div class="mb-4">
+        <label for="mobile" class="block text-gray-700 text-sm font-bold mb-2">Mobile Number:</label>
+        <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required value="<%= userDetails.mob %>"
+               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    </div>
+
+    <!-- College Name -->
+    <div class="mb-4">
+        <label for="college" class="block text-gray-700 text-sm font-bold mb-2">College Name:</label>
+        <input type="text" id="college" name="college" required value="<%= userDetails.college %>"
+               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    </div>
+
+    <!-- Passing Year -->
+    <div class="mb-4">
+        <label for="passingYear" class="block text-gray-700 text-sm font-bold mb-2">Passing Year:</label>
+        <input type="text" id="passingYear" name="passingYear" required value="<%= userDetails.passingYear %>"
+               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    </div>
+
+    <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">Save Changes</button>
+</form>
+
+</body>
+</html>

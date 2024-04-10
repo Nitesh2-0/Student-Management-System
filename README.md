@@ -24,7 +24,7 @@ The Student Management System is a web-based application designed to assist educ
 - Start MongoDB server.
 - Update the database configuration in `config/database.js` if needed.
 4. **Run the Application**:
-5. Access the application at `http://localhost:3000` in your web browser.
+5. Access the application at `http://localhost:8080` in your web browser.
 
 ## Folder Structure
 - **`config/`**: Contains configuration files, including database configuration.

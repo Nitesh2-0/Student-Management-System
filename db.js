@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   mob: {
-    type: Number,
+    type: String,
     required: true,
   },
   password: {
@@ -22,8 +22,8 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   college: {
-    type: String,
-    required: true,
+    type:String,
+    require:true,
   },
   passingYear: {
     type: Number,
@@ -34,5 +34,9 @@ const userSchema = new mongoose.Schema({
     default:
       "https://photoaid.com/en/tools/_next/static/images/before-25ed01ce5b208e9df51888c519ef7949.webp",
   },
+  course:{
+    type:String,
+    require:true,
+  }
 });
 module.exports = mongoose.model("Users", userSchema);

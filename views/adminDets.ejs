@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+</head>
+<body class="bg-gray-500">
+  <main class="container mx-auto h-screen flex flex-col justify-center items-center p-8">
+    <div id="userDetailsCart" class="bg-gray-400 border border-gray-700 rounded-md shadow-lg text-white w-full md:w-1/2 p-2">
+      <% adminData.forEach(admin => { %>
+        <div class="flex justify-center mb-4 relative">
+          <!-- User photo -->
+          <img src="<%= admin.img %>" alt="User Photo" class="h-40 w-40 rounded-full object-cover shadow-md">
+          <p class="absolute top-1/2 "><i class="ri-pencil-fill text-white-700 rounded-full p-1 bg-gray-400 cursor-pointer hidden"></i></p>
+      </div>
+      <div class="px-4">
+        <!-- User details -->
+        <p><b class="font-semibold">Name : </b><%= admin.name %></p>
+        <p><b class="font-semibold">Email : </b><%= admin.email %></p>
+        <p><b class="font-semibold">Mob. Number : </b><%= admin.mob %></p>
+        <p><b class="font-semibold">Company Nmae : </b><%= admin.companyName  %></p>
+      </div>
+      <% }) %>
+      <div class="flex justify-between px-4 py-2 mt-4">
+        <a href=""><i class="ri-pencil-fill text-white-700 rounded-full p-1 bg-blue-700"></i></a>
+        <a href="" class="px-2">
+          <i class="ri-logout-circle-r-fill text-white-700 rounded-md p-1 bg-gray-400 flex items-center gap-2">
+              <p class="text-sm font-light">logout</p>
+          </i>
+        </a>      
+      </div>
+    </div>
+    <a href="/adminFeed" class="mt-8 text-white px-7 py-2 bg-green-700 rounded">Go Back</a>
+  </main>
+</body>
+</html>

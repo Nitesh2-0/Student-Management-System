@@ -6,6 +6,7 @@ const User = require('./db');
 const Admin = require('./models/admin')
 const session = require('express-session');
 
+
 app.listen(PORT,()=>{
   console.log(`Server is Running at Port No ::${PORT}`)
 })
@@ -25,11 +26,15 @@ app.use(session({
 
 
 app.get('/',(req,res,next) =>{ 
-  res.render('register')
+  res.render('studentFeed')
 })
 
 app.get('/login',(req,res) =>{
   res.render('login');
+})
+
+app.get('/register', (req,res) => {
+  res.render('register')
 })
 
 /** Register Route Start Here  */
@@ -47,6 +52,7 @@ app.post('/register', async (req, res, next) => {
               password,
               adminId:idNumber
           });
+          
           req.session.idNumber = idNumber;
           res.redirect('/adminFeed');
       } else {
@@ -59,8 +65,9 @@ app.post('/register', async (req, res, next) => {
           passingYear:"2025",
           course:"BTech"
         });
-        res.redirect("/studentFeed");    
+        res.redirect("/");    
       }
+      
   } catch (err) {
       console.log("An error occurred:", err);
       res.status(500).send("An error occurred. Please try again later.");
@@ -94,18 +101,13 @@ app.get('/adminFeed', async (req, res) => {
 });
 /** AdminFeed page End */
 
-/**Student Feed page Start Here */
-app.get('/studentFeed',(req,res) =>{
-  res.render('studentFeed')
-})
-/**Student Feed page Start End */
-
 /** Admin can add Student Here Start */
 app.get('/newStudent',(req,res) =>{
   res.render('student');
 })
 /** Admin can add Student Here End */
 
+/** Admin can create Student Here Start */
 app.post('/newStudent/created', async (req, res) => {
   const { name, email, mobile, password, passingYear, college,course} = req.body;
   try {
@@ -124,7 +126,9 @@ app.post('/newStudent/created', async (req, res) => {
       res.status(500).send("Error creating new user");
   }
 });
+/** Admin can create Student Here End */
 
+/** Admin can delete Student Here End */
 app.get('/delete/:id', async (req, res) => {
   try {
     await User.deleteOne({ _id: req.params.id });
@@ -134,18 +138,23 @@ app.get('/delete/:id', async (req, res) => {
     res.status(500).send("Error deleting user");
   }
 });
+/** Admin can delete Student Here End */
 
+/** Admin can edit Student profile Here start */
 app.get('/edit/:id', async (req,res) =>{
   let userDetails = await User.findOne({_id:req.params.id});
   res.render('edit',{userDetails});
 })
+/** Admin can edit Student profile Here End */
 
+/** Admin profile Start*/
 app.post('/update/:id', async(req, res) =>{
   let {id} = req.params;
   let {name,email,mobile,password} = req.body; 
-  let userUpdate = await User.findOneAndUpdate({name,email,mob:mobile,password}); 
+  let userUpdate = await User.findOneAndUpdate({name,email,mob:"+91 " + mobile,password}); 
   res.redirect('/adminFeed');
 })
+/** Admin profile End */
 
 app.get('/student-details/:id', async (req, res) => {
   try {
@@ -153,19 +162,21 @@ app.get('/student-details/:id', async (req, res) => {
       if (!userDets) {
           res.send('this use does not exist')
       }
-      res.render('userDets',{userDets,isAdmin:"NO"});
+      res.render('userDets',{userDets,isAdmin:"YES"});
   } catch (error) {
       console.error('Error:', error.message);
   }
 });
 
-//Addmin Details
+/** Addmin Details Here */
 app.get('/adminFeed/admin',async (req,res) =>{
 
   let id = req.session.idNumber; 
+  let isAdmin = "YES";
 
   let adminData = await Admin.find({adminId:id});
   console.log(id);
 
   res.render('adminDets',{title:"Admin",adminData})
 })
+/** Addmin Details End Here*/

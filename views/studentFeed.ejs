@@ -1,11 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello</title>
+  <meta charset="utf-8" />
+  <title>TIT Group</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="/images/TIT-logo.webp" type="image/x-icon">
+  <style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    #hero {
+     width: 100%;
+     height: 100%; /* Adjust height as needed */
+     background-image: url('/images/TIT-hero.jpeg');
+     background-size: cover;
+     background-position: center;
+     /* Add any additional styles as needed */
+    }
+    .bg-gray-100 {
+      background-color: #f7fafc;
+    }
+
+    .bg-gray-800 {
+      background-color: #2d3748;
+    }
+
+    .text-blue-500 {
+      color: #3b82f6;
+    }
+
+    .text-blue-600 {
+      color: #2563eb;
+    }
+
+    .text-white {
+      color: #fff;
+    }
+
+    .hover\:text-gray-300:hover {
+      color: #d1d5db;
+    }
+
+    .hover\:text-blue-600:hover {
+      color: #2563eb;
+    }
+
+    .bg-blue-500 {
+      background-color: #3b82f6;
+    }
+
+    .hover\:bg-blue-600:hover {
+      background-color: #2563eb;
+    }
+
+    .rounded-md {
+      border-radius: 0.375rem;
+    }
+    #admission {
+      background-color: #f3f4f6;
+    }
+
+    .form-input {
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      padding: 0.5rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #4f46e5;
+    }
+
+    .form-select {
+      appearance: none;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      padding: 0.5rem;
+      transition: border-color 0.3s ease;
+      background-image: url('data:image/svg+xml,%3csvg fill="%23ffffff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"%3e%3cpath fill-rule="evenodd" clip-rule="evenodd" d="M6.293 7.707a1 1 0 0 1 1.414 0L10 10.586l2.293-2.293a1 1 0 1 1 1.414 1.414l-3 3a1 1 0 0 1-1.414 0l-3-3a1 1 0 0 1 0-1.414z"%3e%3c/path%3e%3c/svg%3e');
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 1.5em 1.5em;
+    }
+
+    .form-select:focus {
+      outline: none;
+      border-color: #4f46e5;
+    }
+
+    .form-textarea {
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      padding: 0.5rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-textarea:focus {
+      outline: none;
+      border-color: #4f46e5;
+    }
+
+    .form-submit {
+      background-color: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 0.375rem;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-submit:hover {
+      background-color: #4338ca;
+    }
+    #admission  {
+     width: 100%;
+     height: 100%; 
+     background-image: url('/images/TIT-hero.jpeg');
+     background-size: cover;
+     background-position: center;
+   
+    }
+    #course{
+       background-color: #F1F0EE;
+    }
+    #about{
+      background-color: #F1F0EE;
+    }
+   
+  </style>
 </head>
+
 <body>
-  <p>This is the Student Feed page</p>
+  <nav class="bg-gray-800 p-4 fixed w-full top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/" class="flex items-center text-white">
+          <img src="/images/TIT-logo.webp" alt="College Logo" class="h-10 w-auto mr-2 rounded-md">
+          <span class="font-bold text-lg">TIT GROUP</span>
+        </a>
+      </div>
+      <!-- Navigation Links -->
+      <div class="hidden lg:flex lg:space-x-8">
+        <a href="#hero" class="text-white hover:text-gray-300">Home</a>
+        <a href="#about" class="text-white hover:text-gray-300">About</a>
+        <a href="#course" class="text-white hover:text-gray-300">Courses</a>
+        <a href="#admission" class="text-white hover:text-gray-300">Admissions</a>
+      </div>
+      
+      <!-- Login/Account -->
+      <div class="flex-shrink-0">
+        <a href="/register" class="text-white hover:text-gray-300 px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 transition-colors duration-300">Sign Up</a>
+      </div>
+
+    </div>
+  </nav>
+
+  <section id="hero" class="bg-gray-200 py-8 text-center flex items-center justify-center flex-col">
+    <!-- <div class="container w-full text-center flex items-center justify-center">
+      <h1 class="text-4xl font-bold text-gray-300">Welcome to TIT Group, the largest central educational hub in India.</h1>
+    </div> -->
+  </section>    
+
+  <!-- About Section -->
+  <section id="about" class="py-16 px-4 md:px-0">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold mb-8">About Us</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <img src="/images/TIT-About.webp" alt="College Campus" class="w-full rounded-lg">
+        </div>
+        <div>
+          <p class="text-lg mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget est vitae lorem vestibulum luctus ut in dolor. Quisque consequat turpis quis urna malesuada, et consequat velit scelerisque. Donec sodales, elit nec vehicula congue, neque justo mattis dui, id sollicitudin ex sapien vel sem.</p>
+          <p class="text-lg">Fusce quis consequat nunc. Nullam nec elit quis lorem dapibus feugiat. Vivamus in lectus at felis sagittis mattis. Aenean interdum eros nec posuere interdum. Nulla sed mi risus. Pellentesque tempor, lacus nec suscipit iaculis, ligula arcu dictum sapien, id semper urna lorem a purus. Aliquam erat volutpat. Integer nec ex est. Vestibulum et felis id ex hendrerit laoreet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End About Section -->
+
+  <section id="course" class="bg-gray-100 py-8  p-4 ">
+    <div class="container mx-auto">
+      <h2 class="text-2xl font-bold mb-4">Courses Offered</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Course Card - BTech -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="/images/Cart.jpeg" alt="BTech" class="w-full h-64 object-cover">
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-2">BTech</h3>
+            <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis.</p>
+            <a href="#" class="block mt-2 text-blue-500 hover:text-blue-600">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Course Card - MBA -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="/images/Cart.jpeg" alt="MBA" class="w-full h-64 object-cover">
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-2">MBA</h3>
+            <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis.</p>
+            <a href="#" class="block mt-2 text-blue-500 hover:text-blue-600">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Course Card - Pharmacy -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="/images/Cart.jpeg" alt="Pharmacy" class="w-full h-64 object-cover">
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-2">Pharmacy</h3>
+            <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis.</p>
+            <a href="#" class="block mt-2 text-blue-500 hover:text-blue-600">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Course Card - Nursing -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="/images/Cart.jpeg" alt="Nursing" class="w-full h-64 object-cover">
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-2">Nursing</h3>
+            <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis.</p>
+            <a href="#" class="block mt-2 text-blue-500 hover:text-blue-600">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Course Card - Law -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="/images/Cart.jpeg" alt="Law" class="w-full h-64 object-cover">
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-2">Law</h3>
+            <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis.</p>
+            <a href="#" class="block mt-2 text-blue-500 hover:text-blue-600">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="admission" class="min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded shadow-md w-96">
+      <h2 class="text-2xl font-semibold mb-4 text-gray-800">College Admission Form</h2>
+      <form action="#" method="POST">
+        <div class="mb-4">
+          <label for="name" class="block text-sm font-semibold text-gray-700">Full Name</label>
+          <input type="text" id="name" name="name" class="form-input mt-1 w-full" required>
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-semibold text-gray-700">Email</label>
+          <input type="email" id="email" name="email" class="form-input mt-1 w-full" required>
+        </div>
+        <div class="mb-4">
+          <label for="phone" class="block text-sm font-semibold text-gray-700">Phone Number</label>
+          <input type="tel" id="phone" name="phone" class="form-input mt-1 w-full" required>
+        </div>
+        <div class="mb-4">
+          <label for="course" class="block text-sm font-semibold text-gray-700">Select Course</label>
+          <select id="course" name="course" class="form-select mt-1 w-full" required>
+            <option value="" disabled selected>Select Course</option>
+            <option value="BTech">BTech</option>
+            <option value="MBA">MBA</option>
+            <option value="Pharmacy">Pharmacy</option>
+            <option value="Nursing">Nursing</option>
+            <option value="Law">Law</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label for="message" class="block text-sm font-semibold text-gray-700">Message</label>
+          <textarea id="message" name="message" class="form-textarea mt-1 w-full h-24"></textarea>
+        </div>
+        <div class="flex justify-end">
+          <button type="submit" class="form-submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="bg-gray-800 text-white py-4 lg:py-8">
+    <div class="container mx-auto flex flex-col lg:flex-row items-center justify-between">
+      <div class="mb-4 lg:mb-0">
+        <p class="text-xs lg:text-sm">&copy; 2024 TIT Group. All rights reserved.</p>
+      </div>
+      <div>
+        <ul class="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4">
+          <li><a href="#" class="text-xs lg:text-sm hover:text-gray-300">Privacy Policy</a></li>
+          <li><a href="#" class="text-xs lg:text-sm hover:text-gray-300">Terms of Service</a></li>
+          <li><a href="#" class="text-xs lg:text-sm hover:text-gray-300">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  
 </body>
 </html>

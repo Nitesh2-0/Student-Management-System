@@ -34,6 +34,7 @@ const userSchema = new mongoose.Schema({
     default:
       "https://photoaid.com/en/tools/_next/static/images/before-25ed01ce5b208e9df51888c519ef7949.webp",
   },
+  role: { type: String, enum: ['student', 'admin'], default: 'student' },
   course:{
     type:String,
     require:true,

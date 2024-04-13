@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Registration</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/TIT-logo.webp" type="image/x-icon">
 </head>
 <body class="bg-gray-900 text-white">
     <div class="max-w-md mx-auto mt-8 bg-gray-800 shadow-md rounded-md overflow-hidden">
@@ -33,11 +34,19 @@
                     <label for="idNumber" class="block text-sm font-medium text-white">ID Number</label>
                     <input type="text" id="idNumber" name="idNumber" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full px-3 py-2 border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white" placeholder="ID Number" >
                 </div>
-                <div class="mb-6">
-                    <label class="flex items-center text-white">
-                        <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-400" name="isAdmin" id="isAdminCheckbox">
-                        <span class="ml-2 text-sm">Are you admin?</span>
-                    </label>
+                <div class="mb-4">
+                    <label for="role" class="block text-sm font-medium text-white">Role</label>
+                    <div class="relative">
+                        <select id="role" name="role" class="appearance-none bg-gray-700 border-gray-600 border rounded-md px-3 py-2 pr-8 focus:outline-none focus:border-blue-500 focus:ring-blue-500 text-white">
+                            <option value="student">Student</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                            <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
                 <div class="flex items-center justify-center">
                     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
@@ -52,11 +61,11 @@
     </div>
 
     <script>
-        const isAdminCheckbox = document.getElementById('isAdminCheckbox');
+        const roleDropdown = document.getElementById('role');
         const idNumberField = document.getElementById('idNumberField');
 
-        isAdminCheckbox.addEventListener('change', function() {
-            if (this.checked) {
+        roleDropdown.addEventListener('change', function() {
+            if (this.value === 'admin') {
                 idNumberField.style.display = 'block';
             } else {
                 idNumberField.style.display = 'none';

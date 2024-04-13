@@ -6,10 +6,24 @@
     <title><%= title %></title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="shortcut icon" href="/images/TIT-logo.webp" type="image/x-icon">
+    <style>
+      body{
+        background-image: url('/images/TIT-hero.jpeg');
+        width: 100%;
+        height: 100%; /* Adjust height as needed */
+        background-image: url('/images/TIT-hero.jpeg');
+        background-size: cover;
+        background-position: center;
+      }
+      #userDetailsCart{
+        /* background-color: rgb(233, 211, 183); */
+      }
+    </style>
 </head>
 <body class="bg-gray-500">
   <main class="container mx-auto h-screen flex flex-col justify-center items-center p-8">
-    <div id="userDetailsCart" class="bg-gray-400 border border-gray-700 rounded-md shadow-lg text-white w-full md:w-1/2 p-2">
+    <div id="userDetailsCart" class="bg-green-500 rounded-md shadow-lg text-white w-full md:w-1/2 p-2">
       <% adminData.forEach(admin => { %>
         <div class="flex justify-center mb-4 relative">
           <!-- User photo -->

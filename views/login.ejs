@@ -5,19 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> 
+  <link rel="shortcut icon" href="/images/TIT-logo.webp" type="image/x-icon">
 </head>
 <body class="bg-gray-900 text-white">
   <div class="flex h-screen justify-center items-center">
     <div class="bg-gray-800 rounded-lg shadow-lg p-8 max-w-md w-full">
       <h2 class="text-2xl font-semibold mb-6 text-center">Login</h2>
-      <form accept="" method="post">
+      <form accept="/login" method="post">
         <div class="mb-4">
           <label for="loginEmail" class="block text-sm font-medium">Email</label>
-          <input type="email" id="loginEmail" name="loginEmail" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full px-3 py-2 border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white" placeholder="example@gmail.com">
+          <input type="email" id="loginEmail" name="email" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full px-3 py-2 border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white" placeholder="example@gmail.com">
         </div>
         <div class="mb-4">
           <label for="loginPassword" class="block text-sm font-medium">Password</label>
-          <input type="password" id="loginPassword" name="loginPassword" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full px-3 py-2 border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white" placeholder="Password">
+          <input type="password" id="loginPassword" name="password" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full px-3 py-2 border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white" placeholder="Password">
         </div>
         <div class="flex items-center justify-center">
           <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-400">

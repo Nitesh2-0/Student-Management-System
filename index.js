@@ -1,8 +1,9 @@
 const express = require('express'); 
 const path = require('path'); 
 const app = express(); 
+const bcrypt = require('bcrypt')
 const PORT = 8080; 
-const User = require('./db');
+const User = require('./models/student');
 const Admin = require('./models/admin')
 const session = require('express-session');
 
@@ -24,14 +25,34 @@ app.use(session({
   saveUninitialized: true
 }));
 
-
-app.get('/',(req,res,next) =>{ 
-  res.render('studentFeed')
+app.get('/', async (req,res,next) =>{ 
+  res.render('studentFeed',{student:false})
 })
 
 app.get('/login',(req,res) =>{
   res.render('login');
 })
+
+
+/** Login Start Here */ 
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  console.log(email + " " + password); 
+  const user = await User.findOne({ email }); 
+
+  if (user && user.password === password) {
+    return res.redirect('/studentFeed'); 
+  } else {
+    const admin = await Admin.findOne({ email });
+    if (admin && admin.password === password) {
+      req.session.email = email;
+      return res.redirect('/adminFeed');
+    }
+  }
+  res.redirect('/');
+});
+
+/** Login End Here */ 
 
 app.get('/register', (req,res) => {
   res.render('register')
@@ -40,11 +61,11 @@ app.get('/register', (req,res) => {
 /** Register Route Start Here  */
 app.post('/register', async (req, res, next) => {
   try {
-      let { name, email, phoneNumber, password, isAdmin,idNumber} = req.body;
-      isAdmin = isAdmin === 'on';
+      let { name, email, phoneNumber, password,role,idNumber} = req.body;
+      role === 'admin';
       let isNumberValid = idNumber.startsWith("@TIT85");
 
-      if (isAdmin && isNumberValid) {
+      if (role && isNumberValid) {
           let admin = await Admin.create({
               name,
               email,
@@ -53,7 +74,7 @@ app.post('/register', async (req, res, next) => {
               adminId:idNumber
           });
           
-          req.session.idNumber = idNumber;
+          req.session.email = email;
           res.redirect('/adminFeed');
       } else {
         let user = await User.create({
@@ -63,9 +84,12 @@ app.post('/register', async (req, res, next) => {
           password,
           college:"Technocrats Institue of Technology Bhopal MP",
           passingYear:"2025",
-          course:"BTech"
+          course:"BTech",
+
         });
-        res.redirect("/");    
+        flg = 1;
+        req.session.email = email; 
+        res.redirect("/studentFeed");    
       }
       
   } catch (err) {
@@ -78,16 +102,16 @@ app.post('/register', async (req, res, next) => {
 /** AdminFeed page Start */
 app.get('/adminFeed', async (req, res) => {
   try {
-    const adminId = req.session.idNumber;
+    const adminEmail = req.session.email;
     // console.log(adminId);
 
-    if (!adminId) {
+    if (!adminEmail) {
       return res.redirect('/register'); 
     }
 
-    const admin = await Admin.find({ adminId: adminId });
-
-    if (!admin) {
+    const admin = await Admin.find({ email: adminEmail });
+    console.log(admin)
+    if (!adminEmail) {
       return res.redirect('/register'); 
     }
 
@@ -171,12 +195,16 @@ app.get('/student-details/:id', async (req, res) => {
 /** Addmin Details Here */
 app.get('/adminFeed/admin',async (req,res) =>{
 
-  let id = req.session.idNumber; 
+  let email = req.session.email; 
   let isAdmin = "YES";
 
-  let adminData = await Admin.find({adminId:id});
-  console.log(id);
+  let adminData = await Admin.find({email});
 
   res.render('adminDets',{title:"Admin",adminData})
 })
 /** Addmin Details End Here*/
+
+/** Student Feed Here*/
+app.get('/studentFeed',async (req,res) => {
+  res.render('studentFeed', {student:true});
+})

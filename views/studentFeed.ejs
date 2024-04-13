@@ -135,6 +135,9 @@
       background-color: #F1F0EE;
     }
    
+    /* #user{
+      background-color: #D9C4B3;
+    } */
   </style>
 </head>
 
@@ -157,21 +160,25 @@
       </div>
       
       <!-- Login/Account -->
-      <div class="flex-shrink-0">
-        <a href="/register" class="text-white hover:text-gray-300 px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 transition-colors duration-300">Sign Up</a>
-      </div>
-
+      <% if (!student) { %>
+        <div class="flex-shrink-0">
+          <a href="/register" class="text-white hover:text-gray-300 px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 transition-colors duration-300">Sign Up</a>
+        </div>
+      <% } else { %>
+        <div id="user" class="flex items-center justify-center gap-4 px-4 py-1 cursor-pointer">
+          <p class="text-white">Nitesh</p>
+          <img src="https://i.pinimg.com/564x/c1/fa/16/c1fa169559a6e6bb172c0c79408eb37e.jpg" alt="img" class="w-8 h-8 rounded-full shadow-lg">
+        </div>      
+      <% } %>
     </div>
   </nav>
 
   <section id="hero" class="bg-gray-200 py-8 text-center flex items-center justify-center flex-col">
-    <!-- <div class="container w-full text-center flex items-center justify-center">
-      <h1 class="text-4xl font-bold text-gray-300">Welcome to TIT Group, the largest central educational hub in India.</h1>
-    </div> -->
+    
   </section>    
 
   <!-- About Section -->
-  <section id="about" class="py-16 px-4 md:px-0">
+  <section id="about" class="py-16 px-4 ">
     <div class="container mx-auto">
       <h2 class="text-3xl font-bold mb-8">About Us</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -282,17 +289,17 @@
     </div>
   </section>
 
-  <footer class="bg-gray-800 text-white py-4 lg:py-8">
+  <footer class="bg-gray-800 text-white p-7 py-4 lg:py-8">
     <div class="container mx-auto flex flex-col lg:flex-row items-center justify-between">
-      <div class="mb-4 lg:mb-0">
-        <p class="text-xs lg:text-sm">&copy; 2024 TIT Group. All rights reserved.</p>
-      </div>
       <div>
         <ul class="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4">
           <li><a href="#" class="text-xs lg:text-sm hover:text-gray-300">Privacy Policy</a></li>
           <li><a href="#" class="text-xs lg:text-sm hover:text-gray-300">Terms of Service</a></li>
           <li><a href="#" class="text-xs lg:text-sm hover:text-gray-300">Contact Us</a></li>
         </ul>
+      </div>
+      <div class="mb-4 lg:mb-0">
+        <p class="text-xs lg:text-sm">&copy; 2024 TIT Group. All rights reserved.</p>
       </div>
     </div>
   </footer>
